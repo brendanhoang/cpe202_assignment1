@@ -53,7 +53,7 @@ class Board:
     def __getitem__(self, index):
         return self.items[index]
 
-    # This method should return true if the two boards, self and other,
+    # This method should return true if the two boards
     # represent exactly the same state.
     # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
     def __eq__(self, other):
