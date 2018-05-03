@@ -75,8 +75,38 @@ class Board:
     # is completely filled up (no dummy turtles). 
     # Otherwise, it should return False.
     # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
+    def eval(self):
+        for i in range(3):
+            rowSum = 0
+            columSum = 0
+            for j in range(3):
+                rowSum += self.items[i][j].eval()
+                columSum += self.items[j][i].eval()
+            if abs(rowSum) == 3:
+                return rowSum // 3
+            if abs(columSum) == 3:
+                return columSum // 3
+        diag1Sum = 0
+        diag2Sum = 0
+        for i in range(3):
+            diag1Sum += self.items[i][i].eval()
+            diag2Sum += self.items[i][2 - i].eval()
+        if abs(diag1Sum) == 3:
+            return diag1Sum // 3
+        if abs(diag2Sum) == 3:
+            return diag2Sum // 3
+        return 0
+
+    # This method should return True if the board
+    # is completely filled up (no dummy turtles).
+    # Otherwise, it should return False.
+    # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
     def full(self):
-        pass
+        for i in range(3):
+            for j in range(3):
+                if self.items[i][j].eval() == 0:
+                    return False
+        return True
     
     # This method should draw the X's and O's
     # Of this board on the screen. 
